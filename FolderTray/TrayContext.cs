@@ -52,7 +52,7 @@ class TrayContext : ApplicationContext
         _menu.Items.Add("Exit", null, (s, e) => { _ni.Visible = false; Application.Exit(); });
         _menu.Items.Add(new ToolStripSeparator());
         foreach (var r in _roots.Where(Directory.Exists))
-            AddFolderNode(_menu.Items, new DirectoryInfo(r));
+            AddFolderNode(_menu.Items, new DirectoryInfo(r), isRoot: true);
     }
     void AddRoot()
     {
@@ -130,15 +130,22 @@ class TrayContext : ApplicationContext
     [DllImport("user32.dll", SetLastError = true)]
     private static extern bool DestroyIcon(IntPtr hIcon);
 
-    void AddFolderNode(ToolStripItemCollection items, DirectoryInfo dir)
+    void AddFolderNode(ToolStripItemCollection items, DirectoryInfo dir, bool isRoot = false)
     {
         var m = new ToolStripMenuItem(dir.Name);
         m.Image = GetFolderIcon();
         m.DropDownOpening += (s, e) => {
             m.DropDownItems.Clear();
             m.DropDownItems.Add("Open in Explorer", null, (s2, e2) => Process.Start("explorer.exe", dir.FullName));
+
+            // Add "Remove Folder" option only for root folders
+            if (isRoot)
+            {
+                m.DropDownItems.Add("Remove Folder", null, (s2, e2) => RemoveRoot(dir.FullName));
+            }
+
             m.DropDownItems.Add(new ToolStripSeparator());
-            foreach (var d in dir.GetDirectories()) AddFolderNode(m.DropDownItems, d);
+            foreach (var d in dir.GetDirectories()) AddFolderNode(m.DropDownItems, d, isRoot: false);
             foreach (var f in dir.GetFiles())
             {
                 var fileItem = new ToolStripMenuItem(f.Name, GetFileIcon(f.FullName), (s3, e3) => Process.Start(new ProcessStartInfo(f.FullName) { UseShellExecute = true }));
@@ -146,6 +153,16 @@ class TrayContext : ApplicationContext
             }
         };
         items.Add(m);
+    }
+
+    void RemoveRoot(string path)
+    {
+        if (_roots.Contains(path))
+        {
+            _roots.Remove(path);
+            SaveRoots();
+            RebuildMenu();
+        }
     }
 
 }
