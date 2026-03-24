@@ -114,7 +114,42 @@ FolderTray/bin/Release/net8.0-windows/win-x64/publish/
 
 Because sometimes "progress" means going backwards to move forward. Or something philosophical like that. Mostly, we just missed the old toolbar feature and decided to do something about it instead of complaining on Reddit. 🤷‍♂️
 
-## 🤝 Contributing
+## � Wait, What About ExplorerPatcher?
+
+Good question! Yes, [ExplorerPatcher](https://github.com/valinet/ExplorerPatcher/releases) exists and it's awesome! It patches Windows to bring back many classic features. But here's why FolderTray might be your cup of tea:
+
+### FolderTray vs. ExplorerPatcher
+
+| Feature | FolderTray | ExplorerPatcher |
+|---------|------------|-----------------|
+| **Patches Windows** | ❌ Nope! | ✅ Yes |
+| **Modifies System Files** | ❌ Never! | ✅ Yes |
+| **Survives Windows Updates** | ✅ Always! | ⚠️ Sometimes breaks |
+| **Simple & Lightweight** | ✅ Just one .exe | ⚠️ System-level changes |
+| **Easy to Uninstall** | ✅ Just delete it | ⚠️ Requires uninstaller |
+| **Open Source & Easy to Modify** | ✅ Simple C# code | ✅ Yes, but more complex |
+| **Risk Level** | 🟢 Zero risk | 🟡 Low risk (but patches system) |
+| **Customizable** | ✅ Fork it, hack it, make it yours! | ✅ Yes |
+| **Lives in System Tray** | ✅ Clean & minimal | ❌ Taskbar-based |
+
+### The FolderTray Philosophy 🧘
+
+**We believe in:**
+- **Non-invasive solutions** - No system patching, no DLL injection, no registry hacks
+- **Simplicity** - One small app that does one thing well
+- **Transparency** - Simple, readable C# code that anyone can understand and modify
+- **Safety** - If Windows updates, FolderTray keeps working. No surprises!
+- **Freedom** - Don't like something? Fork it! Change it! Make it yours!
+
+**Think of it this way:**
+- **ExplorerPatcher** = Renovating your house (powerful, but invasive)
+- **FolderTray** = Adding a nice piece of furniture (simple, safe, removable)
+
+Both are great! ExplorerPatcher is perfect if you want the full classic Windows experience. FolderTray is perfect if you just want quick folder access without touching Windows itself.
+
+**Why not both?** They work great together! 🤝
+
+## �🤝 Contributing
 
 Found a bug? Want to add a feature? Think the README is too silly? (It's not, but okay...)
 
@@ -140,6 +175,9 @@ A: Yes! Though Windows 10 still has the toolbar feature, so you might not need i
 **Q: Does this work on Windows 11?**
 A: Absolutely! That's literally why it exists. Welcome back to productivity! 🎉
 
+**Q: Should I use this or ExplorerPatcher?**
+A: Why choose? Use both! But if you want just folder access without patching Windows, FolderTray is your friend. If you want the full classic Windows experience and don't mind system patches, ExplorerPatcher is amazing. We're friends, not competitors! 🤝
+
 **Q: Will Microsoft ban me for using this?**
 A: No. This is just a regular app. Microsoft might be sad that you're working around their "improvements," but they'll get over it.
 
@@ -149,12 +187,28 @@ A: If Windows can see it as a folder, FolderTray can handle it! Go wild! 🌐
 **Q: Is this better than the original Windows toolbar?**
 A: We like to think so! Plus, it works on Windows 11, so... yeah! 😏
 
+**Q: Can I modify the code?**
+A: Absolutely! That's the whole point! The code is simple C# - fork it, hack it, make it do backflips! We encourage it! 🎨
+
 **Q: Why is the README so sarcastic?**
 A: Because we're still processing our grief over losing the original feature. Humor is how we cope. 😅
+
+**Q: Will this break when Windows updates?**
+A: Nope! Unlike system patches, FolderTray is just a regular app. Windows can update all it wants, we'll keep chugging along! 💪
+
+---
+
+## 🙌 Shout-Outs
+
+Big thanks to the [ExplorerPatcher](https://github.com/valinet/ExplorerPatcher) team for their amazing work bringing back classic Windows features! If you want the full classic experience, check them out!
+
+We're all in this together, fighting the good fight against unnecessary UI changes. ✊
 
 ---
 
 **Star this repo if you also miss the old Windows features!** ⭐
 **Share it with your friends who complain about Windows 11!** 📢
 **Let's bring back the classics, one app at a time!** 🚀
+
+**P.S.** - If you're a developer and want to learn how to build Windows tray apps, this codebase is super simple and well-commented. Fork it, learn from it, build something cool! 🎓
 
